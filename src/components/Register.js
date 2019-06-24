@@ -5,25 +5,51 @@ class Register extends Component {
 
     onButtonClick = () => {
         const user = this.username.value
-        const email = this.email.value
+        const emaiL = this.email.value
         const pass = this.password.value
 
+        
         // GET, axios.get, request data
-        // axios.get(
-        //     'http://localhost:2019/users',
-        //     {
-        //         params: {
-        //             username: 'rochafi'
-        //         }
-        //     }
-        // ).then( res => {
-        //     console.log(res)
-        // }).catch( err => {
-        //     console.log(err)
-        // })
+
+        // Check Username
+        axios.get(
+            'http://localhost:2019/users',
+            {
+                params: {
+                    username: user
+                }
+            }
+        ).then( res => {
+
+            // Jika data ditemukan, array.length > 0
+            if(res.data.length > 0){
+                console.log('Username sudah di gunakan')
+            } else {
+
+                // Check berdasarkan email
+                axios.get(
+                    'http://localhost:2019/users',
+                    {
+                        params: {
+                            email: emaiL
+                        }
+                    }
+                ).then(res => {
+                    // Jika data di temukan, array.length > 0
+                    if(res.data.length > 0){
+                        console.log('Email sudah digunakan')
+                    } else {
+                        // post data
+                        console.log('Akann input data')
+                    }
+                })
+            }
+
+        }).catch( err => {
+            console.log('Gagal request')
+        })
 
         // POST, axios.post, post / menaruh data
-
         // axios.post(
         //     'http://localhost:2019/users',
         //     {
@@ -38,6 +64,8 @@ class Register extends Component {
         //     console.log('Gagal post data')
         //     console.log(err)
         // })
+
+        
 
     }
 
