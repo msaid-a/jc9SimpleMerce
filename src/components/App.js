@@ -14,6 +14,7 @@ class App extends Component {
         return (
             <BrowserRouter>
                 <div>
+                    <Header/>
                     <Route path="/" exact component={Home}/> {/* equal, ===  */}
                     <Route path="/register" component={Register}/> {/* include() */}
                     <Route path="/login" component={Login}/> {/* include() */}
