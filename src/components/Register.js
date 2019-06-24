@@ -109,7 +109,7 @@ class Register extends Component {
                             </form>
 
                             <button onClick={this.onButtonClick} className='btn btn-success'>Click for Register</button>
-                            <p>Tidak memiliki akun ? <Link to="/login" >Daftar disini</Link></p>
+                            <p>Sudah memiliki akun ? <Link to="/login" >Login disini</Link></p>
                         </div>
                     </div>
                 </div>

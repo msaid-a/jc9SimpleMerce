@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Route, BrowserRouter } from 'react-router-dom'
 
+import Header from './Header'
 import Register from './Register'
 import Login from './Login'
 import Home from './Home'
-import Header from './Header'
 import ManageProduct from './ManageProduct'
 
 // localhost:3000/register
@@ -14,14 +14,15 @@ class App extends Component {
         return (
             <BrowserRouter>
                 <div>
-                    {/* <Route path="/" component={Home}/> */}
-                    <Route path="/register" component={Register}/>
-                    <Route path="/login" component={Login}/>
-                    <Route path="/manageproduct" component={ManageProduct}/>
+                    <Route path="/" exact component={Home}/> {/* equal, ===  */}
+                    <Route path="/register" component={Register}/> {/* include() */}
+                    <Route path="/login" component={Login}/> {/* include() */}
+                    <Route path="/manageproduct" component={ManageProduct}/> {/* include() */}
                 </div>
             </BrowserRouter>
         )
     }
 }
+
 
 export default App
