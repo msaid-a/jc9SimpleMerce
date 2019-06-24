@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 class Register extends Component {
 
@@ -108,6 +109,7 @@ class Register extends Component {
                             </form>
 
                             <button onClick={this.onButtonClick} className='btn btn-success'>Click for Register</button>
+                            <p>Tidak memiliki akun ? <Link to="/login" >Daftar disini</Link></p>
                         </div>
                     </div>
                 </div>
