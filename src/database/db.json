@@ -11,6 +11,12 @@
       "email": "rochafi@gm.com",
       "password": "qwerty",
       "id": 2
+    },
+    {
+      "username": "hanafi",
+      "email": "hanafi@gmail.com",
+      "password": "astuasas",
+      "id": 3
     }
   ]
 }

@@ -21,7 +21,7 @@ class Register extends Component {
             }
         ).then( res => {
 
-            // Jika data ditemukan, array.length > 0
+            // Jika Username ditemukan, array.length > 0
             if(res.data.length > 0){
                 console.log('Username sudah di gunakan')
             } else {
@@ -35,12 +35,25 @@ class Register extends Component {
                         }
                     }
                 ).then(res => {
-                    // Jika data di temukan, array.length > 0
+                    // Jika Email di temukan, array.length > 0
                     if(res.data.length > 0){
                         console.log('Email sudah digunakan')
                     } else {
                         // post data
-                        console.log('Akann input data')
+                        axios.post(
+                            'http://localhost:2019/users',
+                            {
+                                username: user,
+                                email: emaiL,
+                                password: pass
+                            }
+                        ).then( (res) => {
+                            console.log('Data berhasil di input')
+                            console.log(res)
+                        }).catch( (err) => {
+                            console.log('Gagal post data')
+                            console.log(err)
+                        })
                     }
                 })
             }
@@ -50,20 +63,7 @@ class Register extends Component {
         })
 
         // POST, axios.post, post / menaruh data
-        // axios.post(
-        //     'http://localhost:2019/users',
-        //     {
-        //         username: user,
-        //         email: email,
-        //         password: pass
-        //     }
-        // ).then( (res) => {
-        //     console.log('Data berhasil di input')
-        //     console.log(res)
-        // }).catch( (err) => {
-        //     console.log('Gagal post data')
-        //     console.log(err)
-        // })
+        
 
         
 
