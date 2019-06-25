@@ -1,7 +1,32 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
+import axios from 'axios'
 
 class Login extends Component {
+
+    // bikin function
+    onButtonClick = () => {
+        // ambil data di text input
+            // username dan password
+        var user = this.username.value // data dari text input
+        var pass = this.password.value
+
+        // tembak data ke database
+        axios.get(
+            'http://localhost:2019/users',
+            {
+                params: {
+                    username: user,
+                    password: pass
+                }
+            }
+        ).then(res => {
+            
+        })
+            // berhasil, console.log
+            // gagal, console.log
+    }
+
     render () {
         return (
             <div>
