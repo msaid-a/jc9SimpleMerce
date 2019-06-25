@@ -2,13 +2,18 @@ import { combineReducers } from 'redux'
 
 const init = {
     id: '',
-    username: ''
+    username: '',
+    message: ''
 }
 
 const AuthReducer = (data = init, action) => {
     switch (action.type) {
         case "LOGIN_SUCCESS":
-            return {id: 2, username: 'alvin'}
+            return {
+                ...data,
+                id: action.payload.id,
+                username: action.payload.username
+            }
     
         default:
             return data
@@ -17,6 +22,6 @@ const AuthReducer = (data = init, action) => {
 
 export default combineReducers(
     {
-        auth: AuthReducer // {id: '', username: ''}
+        auth: AuthReducer // {id: 1, username: 'alvin'}
     }
 )

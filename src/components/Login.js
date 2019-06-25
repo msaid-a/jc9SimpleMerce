@@ -21,7 +21,7 @@ class Login extends Component {
     render () {
         return (
             <div>
-
+                <h1>{this.props.user.username}</h1>
                 <div className = 'mt-5 row'>
                     <div className = 'col-sm-4 mx-auto card'>
                         <div className = 'card-body'>
@@ -58,4 +58,10 @@ class Login extends Component {
     }
 }
 
-export default connect(null, {onLoginUser})(Login)
+const mapStateToProps = state => {
+    return {
+        user: state.auth // {id, username}
+    }
+}
+
+export default connect(mapStateToProps, {onLoginUser})(Login)
