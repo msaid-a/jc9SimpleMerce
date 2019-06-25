@@ -21,10 +21,13 @@ class Login extends Component {
                 }
             }
         ).then(res => {
-            
+            // res.data = [], jumlah isi array menggunakan length
+            if(res.data.length > 0){
+                console.log(res.data[0].username + ' Berhasil login')
+            } else {
+                console.log('Username / Password incorrect')
+            }
         })
-            // berhasil, console.log
-            // gagal, console.log
     }
 
     render () {
