@@ -8,8 +8,7 @@ const init = {
 const AuthReducer = (data = init, action) => {
     switch (action.type) {
         case "LOGIN_SUCCESS":
-            // do something
-            break;
+            return {id: 2, username: 'alvin'}
     
         default:
             return data

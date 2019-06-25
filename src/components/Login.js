@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
-import axios from 'axios'
+import { connect } from 'react-redux'
+
+import { onLoginUser } from '../actions'
 
 class Login extends Component {
 
@@ -12,22 +14,8 @@ class Login extends Component {
         var pass = this.password.value
 
         // tembak data ke database
-        axios.get(
-            'http://localhost:2019/users',
-            {
-                params: {
-                    username: user,
-                    password: pass
-                }
-            }
-        ).then(res => {
-            // res.data = [], jumlah isi array menggunakan length
-            if(res.data.length > 0){
-                console.log(res.data[0].username + ' Berhasil login')
-            } else {
-                console.log('Username / Password incorrect')
-            }
-        })
+        this.props.onLoginUser(user, pass)
+        
     }
 
     render () {
@@ -70,4 +58,4 @@ class Login extends Component {
     }
 }
 
-export default Login
+export default connect(null, {onLoginUser})(Login)
