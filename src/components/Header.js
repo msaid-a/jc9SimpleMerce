@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
+import { onLogoutUser } from '../actions'
+
 import {
     Button,
     Collapse,
@@ -26,6 +28,11 @@ class Header extends Component {
         this.setState({
           isOpen: !this.state.isOpen
         });
+      }
+
+      onButtonClick = () => {
+          // menghapus username dari redux state
+          this.props.onLogoutUser()
       }
 
     render () {
@@ -81,9 +88,9 @@ class Header extends Component {
                         Option 2
                         </DropdownItem>
                         <DropdownItem divider />
-                        <DropdownItem>
-                        Reset
-                        </DropdownItem>
+                        <Button className='dropdown-item' onClick={this.onButtonClick}>
+                            Logout
+                        </Button>
                     </DropdownMenu>
                     </UncontrolledDropdown>
                     </Nav>
@@ -102,4 +109,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(Header)
+export default connect(mapStateToProps, {onLogoutUser})(Header)

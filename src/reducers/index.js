@@ -14,6 +14,13 @@ const AuthReducer = (data = init, action) => {
                 id: action.payload.id,
                 username: action.payload.username
             }
+
+        case "LOGOUT_SUCCESS":
+            return {
+                ...data,
+                id: '',
+                username: ''
+            }
     
         default:
             return data
@@ -22,6 +29,6 @@ const AuthReducer = (data = init, action) => {
 
 export default combineReducers(
     {
-        auth: AuthReducer // {id: 1, username: 'alvin'}
+        auth: AuthReducer // {id: 1, username: ''}
     }
 )

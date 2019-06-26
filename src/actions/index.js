@@ -30,3 +30,9 @@ export const onLoginUser = (user, pass) => {
     }
 
 }
+
+export const onLogoutUser = () => {
+    return {
+        type: 'LOGOUT_SUCCESS'
+    }
+}
