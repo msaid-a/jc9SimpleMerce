@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+
 import {
     Button,
     Collapse,
@@ -7,7 +9,9 @@ import {
     NavbarToggler,
     NavbarBrand,
     Nav,
-    NavItem } from 'reactstrap';
+    NavItem,
+    NavLink, UncontrolledDropdown,DropdownToggle,
+    DropdownMenu, DropdownItem } from 'reactstrap';
 
 class Header extends Component {
     constructor(props) {
@@ -25,32 +29,77 @@ class Header extends Component {
       }
 
     render () {
+        if(this.props.user.username == ''){
+            // Render ketika belum login
+            return (
+                <div>
+                    <Navbar color="light" light expand="md">
+                    <NavbarBrand href="/">simpleMerce</NavbarBrand>
+                    <NavbarToggler onClick={this.toggle} />
+                    <Collapse isOpen={this.state.isOpen} navbar>
+                        <Nav className="ml-auto" navbar>
+                        <NavItem>
+                            <Link to='/' >All Products</Link>
+                        </NavItem>
+                        <NavItem>
+                            <Link to='/register'>
+                                <Button color="primary" className="mx-3">Register</Button>
+                            </Link>
+                        </NavItem>
+                        <NavItem>
+                            <Link to='/login' >
+                                <Button color="success">Login</Button>
+                            </Link>
+                        </NavItem>
+                        </Nav>
+                    </Collapse>
+                    </Navbar>
+                </div>
+            )
+        } 
+
+        // Render setelah login
         return (
             <div>
                 <Navbar color="light" light expand="md">
-                <NavbarBrand href="/">simpleMerce</NavbarBrand>
+                    <NavbarBrand href="/">simpleMerce</NavbarBrand>
                 <NavbarToggler onClick={this.toggle} />
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="ml-auto" navbar>
-                    <NavItem>
+                    <NavItem className='mt-2'>
                         <Link to='/' >All Products</Link>
                     </NavItem>
-                    <NavItem>
-                        <Link to='/register'>
-                            <Button color="primary" className="mx-3">Register</Button>
-                        </Link>
-                    </NavItem>
-                    <NavItem>
-                        <Link to='/login' >
-                            <Button color="success">Login</Button>
-                        </Link>
-                    </NavItem>
+                    <UncontrolledDropdown nav inNavbar>
+                    <DropdownToggle nav caret>
+                        Options
+                    </DropdownToggle>
+                    <DropdownMenu right>
+                        <DropdownItem>
+                        Option 1
+                        </DropdownItem>
+                        <DropdownItem>
+                        Option 2
+                        </DropdownItem>
+                        <DropdownItem divider />
+                        <DropdownItem>
+                        Reset
+                        </DropdownItem>
+                    </DropdownMenu>
+                    </UncontrolledDropdown>
                     </Nav>
                 </Collapse>
                 </Navbar>
             </div>
-        )
+            
+                    
+          );
     }
 }
 
-export default Header
+const mapStateToProps = state => {
+    return {
+        user: state.auth // {id, username}
+    }
+}
+
+export default connect(mapStateToProps)(Header)
