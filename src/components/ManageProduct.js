@@ -14,6 +14,26 @@ class ManageProduct extends Component {
             })
     }
 
+    renderList = () => {
+        return this.state.products.map( item => { // {id, name, price, desc, src}
+            return (
+                <tr>
+                    <td>{item.id}</td>
+                    <td>{item.name}</td>
+                    <td>{item.desc}</td>
+                    <td>{item.price}</td>
+                    <td>
+                        <img className='list' src={item.src}/>
+                    </td>
+                    <td>
+                        <button className = 'btn btn-primary'>Edit</button>
+                        <button className = 'btn btn-warning'>Delete</button>
+                    </td>
+                </tr>
+            )
+        })
+    }
+
     render () {
         return (
             <div className="container">
@@ -30,6 +50,7 @@ class ManageProduct extends Component {
                         </tr>
                     </thead>
                     <tbody>
+                        {this.renderList()}
                     </tbody>
                 </table>
                 <h1 className="display-4 text-center">Input Product</h1>
