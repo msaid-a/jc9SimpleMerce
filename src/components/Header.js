@@ -11,8 +11,7 @@ import {
     NavbarToggler,
     NavbarBrand,
     Nav,
-    NavItem,
-    NavLink, UncontrolledDropdown,DropdownToggle,
+    NavItem, UncontrolledDropdown,DropdownToggle,
     DropdownMenu, DropdownItem } from 'reactstrap';
 
 class Header extends Component {
