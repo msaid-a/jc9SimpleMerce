@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 
 import ProductItem from './ProductItem'
+import { parse } from '@babel/parser';
 
 class Home extends Component {
 
@@ -16,14 +17,20 @@ class Home extends Component {
 
     onBtnSearch = () => {
         const name = this.name.value
-        const min = this.min.value
-        const max = this.max.value
+        const min = parseInt(this.min.value) // NaN
+        const max = parseInt(this.max.value) // NaN
 
         var arrSearch = this.state.searchProducts.filter(item => {
-            if(item.name.toLowerCase().includes(name)){
-                return true
-            } else if (name === ''){
-                return true
+            if(isNaN(min) && isNaN(max)){ // Search by Name
+                return (
+                    item.name.toLowerCase().includes(name.toLowerCase())
+                )
+            } else if (isNaN(min)){ // Name and Max
+                return (
+                    item.name.toLowerCase().includes(name.toLowerCase())
+                    &&
+                    item.price <= max
+                )
             }
         })
 
