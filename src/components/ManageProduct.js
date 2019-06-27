@@ -8,10 +8,34 @@ class ManageProduct extends Component {
 
     componentDidMount(){
         // Akses database
+        this.getProduct()
+    }
+
+    getProduct = () => {
         axios.get('http://localhost:2019/products')
             .then(res => {
                this.setState({products: res.data})
             })
+    }
+
+    addProduct = () => {
+        const name = this.name.value
+        const desc = this.desc.value
+        const price = parseInt(this.price.value)
+        const pict = this.pict.value
+
+        axios.post(
+            'http://localhost:2019/products',
+            {
+                desc,
+                name,
+                price,
+                src : pict
+            }
+        ).then(res => {
+            // GET DATA
+            this.getProduct()
+        })
     }
 
     renderList = () => {

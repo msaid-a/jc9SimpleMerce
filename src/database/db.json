@@ -10,24 +10,45 @@
   "products": [
     {
       "id": 1,
-      "name": "Nama Product",
+      "name": "T-shirt satu",
       "desc": "Baru Lebaran 2017, Kondisi 90%, minus box",
       "price": 30000,
       "src": "https://www.jakartanotebook.com/images/products/99/63/19075/2/kaos-polos-katun-pria-o-neck-size-m-81402b-or-t-shirt-black-24.jpg"
     },
     {
       "id": 2,
-      "name": "Nama Product",
+      "name": "t-Shirt dua",
       "desc": "Baru Lebaran 2018, Kondisi 90%, minus box",
       "price": 130000,
       "src": "https://www.jakartanotebook.com/images/products/99/63/19075/2/kaos-polos-katun-pria-o-neck-size-m-81402b-or-t-shirt-black-24.jpg"
     },
     {
       "id": 3,
-      "name": "Nama Product",
+      "name": "Hoodie satu",
       "desc": "Baru Lebaran 2019, Kondisi 90%, minus box",
       "price": 230000,
       "src": "https://www.jakartanotebook.com/images/products/99/63/19075/2/kaos-polos-katun-pria-o-neck-size-m-81402b-or-t-shirt-black-24.jpg"
+    },
+    {
+      "name": "hoodie Dua",
+      "desc": "Baru dibuat hari ini",
+      "price": 34000,
+      "src": "https://www.jakartanotebook.com/images/products/99/63/19075/2/kaos-polos-katun-pria-o-neck-size-m-81402b-or-t-shirt-black-24.jpg",
+      "id": 4
+    },
+    {
+      "desc": "Baru dibuat setelah yag pertama",
+      "name": "Bag satu",
+      "price": 35000,
+      "src": "https://www.jakartanotebook.com/images/products/99/63/19075/2/kaos-polos-katun-pria-o-neck-size-m-81402b-or-t-shirt-black-24.jpg",
+      "id": 5
+    },
+    {
+      "desc": "Baru dibuat setelah yag pertama",
+      "name": "bag Dua",
+      "price": 35000,
+      "src": "https://www.jakartanotebook.com/images/products/99/63/19075/2/kaos-polos-katun-pria-o-neck-size-m-81402b-or-t-shirt-black-24.jpg",
+      "id": 6
     }
   ]
 }
