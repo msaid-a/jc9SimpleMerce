@@ -6,24 +6,43 @@ import ProductItem from './ProductItem'
 class Home extends Component {
 
     state = {
-        products: []
+        products: [],
+        searchProducts: []
     }
 
     componentDidMount() {
         this.getProduct()
     }
 
+    onBtnSearch = () => {
+        const name = this.name.value
+        const min = this.min.value
+        const max = this.max.value
+
+        var arrSearch = this.state.searchProducts.filter(item => {
+            if(item.name.toLowerCase().includes(name)){
+                return true
+            } else if (name === ''){
+                return true
+            }
+        })
+
+        this.setState({products: arrSearch})
+
+
+    }
+
     getProduct = () => {
         axios.get('http://localhost:2019/products')
             .then(res => {
-               this.setState({products: res.data})
+               this.setState({products: res.data, searchProducts: res.data})
             })
     }
 
     renderList = () => {
-        return this.state.products.map(item => {
+        return this.state.products.map(item => { // {name, desc, ...}
             return (
-                <ProductItem/>
+                <ProductItem barang={item}/>
             )
         })
     }
