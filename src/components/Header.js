@@ -77,7 +77,7 @@ class Header extends Component {
                     </NavItem>
                     <UncontrolledDropdown nav inNavbar>
                     <DropdownToggle nav caret>
-                        Options
+                        Hallo, {this.props.user.username}
                     </DropdownToggle>
                     <DropdownMenu right>
                         <DropdownItem>

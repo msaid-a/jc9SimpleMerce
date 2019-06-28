@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Route, BrowserRouter } from 'react-router-dom'
+import cookies from 'universal-cookie'
+import { connect } from 'react-redux'
 
 import Header from './Header'
 import Register from './Register'
@@ -7,9 +9,22 @@ import Login from './Login'
 import Home from './Home'
 import ManageProduct from './ManageProduct'
 
-// localhost:3000/register
+import { keepLogin } from '../actions'
+
+const cookie = new cookies()
 
 class App extends Component {
+
+    componentDidMount(){
+        // Check cookie
+        const objCookie = cookie.get('userName') // {id, username} atau undefined
+
+        if(objCookie !== undefined){
+            // Login ulang
+            this.props.keepLogin(objCookie)
+        }
+    }
+
     render() {
         return (
             <BrowserRouter>
@@ -26,4 +41,4 @@ class App extends Component {
 }
 
 
-export default App
+export default connect(null, {keepLogin})(App)
