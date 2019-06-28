@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import axios from 'axios'
 
 import ProductItem from './ProductItem'
-import { parse } from '@babel/parser';
 
 class Home extends Component {
 

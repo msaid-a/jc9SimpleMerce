@@ -1,5 +1,8 @@
 // Action Creator
 import axios from 'axios'
+import cookies from 'universal-cookie'
+
+const cookie = new cookies()
 
 export const onLoginUser = (user, pass) => {
     return (dispatch) => { // dispatch adalah function
@@ -14,15 +17,19 @@ export const onLoginUser = (user, pass) => {
         ).then(res => {
             // res.data = [], jumlah isi array menggunakan length
             if(res.data.length > 0){
+
+                const {id, username} = res.data[0]
+
+                // Kirim action ke reducer, untuk disimpam username
                 dispatch(
                     {
                         type: "LOGIN_SUCCESS",
-                        payload: {
-                            id: res.data[0].id,
-                            username: res.data[0].username
-                        }
+                        payload: {id,username}
                     }
                 )
+
+                // Create data untuk cooki
+                cookie.set('userName', username)
             } else {
                 console.log('Username / Password incorrect')
             }
