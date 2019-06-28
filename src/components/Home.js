@@ -31,7 +31,25 @@ class Home extends Component {
                     &&
                     item.price <= max
                 )
+            } else if(isNaN(max)){ // Name and Min
+                return (
+                    item.name.toLowerCase().includes(name.toLowerCase())
+                    &&
+                    item.price >= min
+                )
+            } else {            // Name & Min & Max
+                return (
+                    // Semua string itu mengandung string kosong (true)
+                    item.name.toLowerCase().includes(name.toLowerCase())
+                    &&
+                    item.price >= min
+                    &&
+                    item.price <= max
+                )
             }
+
+            
+
         })
 
         this.setState({products: arrSearch})
