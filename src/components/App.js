@@ -8,6 +8,7 @@ import Register from './Register'
 import Login from './Login'
 import Home from './Home'
 import ManageProduct from './ManageProduct'
+import DetailProduct from './DetailProduct'
 
 import { keepLogin } from '../actions'
 
@@ -34,6 +35,7 @@ class App extends Component {
                     <Route path="/register" component={Register}/> {/* include() */}
                     <Route path="/login" component={Login}/> {/* include() */}
                     <Route path="/manageproduct" component={ManageProduct}/> {/* include() */}
+                    <Route path='/detailproduct/:product_id' component={DetailProduct}/>
                 </div>
             </BrowserRouter>
         )

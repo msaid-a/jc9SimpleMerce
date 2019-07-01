@@ -22,7 +22,6 @@ class Login extends Component {
     }
 
     render () {
-        'herlambang'
         if(this.props.user.username === ''){
             return (
                 <div>
