@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { isTSEnumMember } from '@babel/types';
 
 class ManageProduct extends Component {
     state = {
-        products: []
+        products: [],
+        selectedId: 0
     }
 
     componentDidMount(){
@@ -40,21 +42,45 @@ class ManageProduct extends Component {
 
     renderList = () => {
         return this.state.products.map( item => { // {id, name, price, desc, src}
-            return (
-                <tr>
-                    <td>{item.id}</td>
-                    <td>{item.name}</td>
-                    <td>{item.desc}</td>
-                    <td>{item.price}</td>
-                    <td>
-                        <img className='list' src={item.src}/>
-                    </td>
-                    <td>
-                        <button className = 'btn btn-primary'>Edit</button>
-                        <button className = 'btn btn-warning'>Delete</button>
-                    </td>
-                </tr>
-            )
+            if(item.id !== this.state.selectedId){
+                return (
+                    <tr>
+                        <td>{item.id}</td>
+                        <td>{item.name}</td>
+                        <td>{item.desc}</td>
+                        <td>{item.price}</td>
+                        <td>
+                            <img className='list' src={item.src}/>
+                        </td>
+                        <td>
+                            <button onClick={() => {this.setState({selectedId: item.id})}} className = 'btn btn-primary'>Edit</button>
+                            <button className = 'btn btn-warning'>Delete</button>
+                        </td>
+                    </tr>
+                )
+            } else {
+                return (
+                    <tr>
+                        <td>{item.id}</td>
+                        <td>
+                            <input className="form-control" ref={input => {this.editName = input}} type="text" defaultValue={item.name}/>
+                        </td>
+                        <td>
+                            <input className="form-control" ref={input => {this.editDesc = input}} type="text" defaultValue={item.desc}/>
+                        </td>
+                        <td>
+                            <input className="form-control" ref={input => {this.editPrice = input}} type="text" defaultValue={item.price}/>
+                        </td>
+                        <td>
+                            <img className='list' src={item.src}/>
+                        </td>
+                        <td>
+                            <button  className = 'btn btn-primary'>Save</button>
+                            <button onClick={() => {this.setState({selectedId: 0})}} className = 'btn btn-warning'>Cancel</button>
+                        </td>
+                    </tr>
+                )
+            }
         })
     }
 

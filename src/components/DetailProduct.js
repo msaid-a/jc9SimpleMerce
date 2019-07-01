@@ -40,7 +40,7 @@ class DetailProduct extends Component {
         // /detailproduct/:product_id -> definisi
         // /detailproduct/78 -> menggunakan
         return (
-            <div className='card col-4 mt-5 mx-auto'>
+            <div className='card col-6 mt-5 mx-auto'>
                 <img className='card-img-top' src={src} />
                 <div className='card-body'>
                     <h3 className ='card-title'>Product: {name}</h3>
