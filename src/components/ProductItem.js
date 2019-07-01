@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom'
 class ProductItem extends Component {
     render(){
         var {id, name, price, src} = this.props.barang // {id, name, desc, price, src}
-        
+        // id = 1
+
         return (
             <div className="card col-3 m-5">
                 <img src={src} className='card-img-top'/>
@@ -20,6 +21,6 @@ class ProductItem extends Component {
             </div>
         )
     }
-}
+} 
 
 export default ProductItem
