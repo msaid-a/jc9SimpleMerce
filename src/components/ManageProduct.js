@@ -13,10 +13,36 @@ class ManageProduct extends Component {
         this.getProduct()
     }
 
+    onSaveItem = id => {
+        var nama = this.editName.value
+        var desk = this.editDesc.value
+        var harga = this.editPrice.value
+
+        axios.patch(
+            'http://localhost:2019/products/' + id,
+            {
+                name: nama,
+                desc: desk,
+                price: harga
+            }
+        ).then(res => {
+            this.getProduct()
+        }).catch(err => {
+            console.log('Gagal')
+        })
+    }
+
+    onDeleteItem = (id) => {
+        axios.delete('http://localhost:2019/products/' + id)
+        .then(() => {
+            this.getProduct()
+        })
+    }
+
     getProduct = () => {
         axios.get('http://localhost:2019/products')
             .then(res => {
-               this.setState({products: res.data})
+               this.setState({products: res.data, selectedId: 0})
             })
     }
 
@@ -54,7 +80,7 @@ class ManageProduct extends Component {
                         </td>
                         <td>
                             <button onClick={() => {this.setState({selectedId: item.id})}} className = 'btn btn-primary'>Edit</button>
-                            <button className = 'btn btn-warning'>Delete</button>
+                            <button onClick={()=>{this.onDeleteItem(item.id)}} className = 'btn btn-warning'>Delete</button>
                         </td>
                     </tr>
                 )
@@ -75,7 +101,7 @@ class ManageProduct extends Component {
                             <img className='list' src={item.src}/>
                         </td>
                         <td>
-                            <button  className = 'btn btn-primary'>Save</button>
+                            <button onClick={() => {this.onSaveItem(item.id)}} className = 'btn btn-primary'>Save</button>
                             <button onClick={() => {this.setState({selectedId: 0})}} className = 'btn btn-warning'>Cancel</button>
                         </td>
                     </tr>
